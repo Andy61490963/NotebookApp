@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block developer %}
+    <h1>Developer url</h1>
+
+    <a href="{% url 'login' %}">Back to Login</a>
+    <a href="{% url 'notes_api' %}">To api page</a>
+    <a href="{% url 'token_obtain_pair' %}">token</a>
+    <a href="{% url 'token_refresh' %}">refresh</a>
+    <a href="{% url 'token_verify' %}">verify</a>
+{% endblock %}

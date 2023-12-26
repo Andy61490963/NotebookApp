@@ -1,0 +1,26 @@
+{% extends 'base.html' %}{% block login %}
+
+<div class="container custom-container">
+    <div id="board">
+        <div class="col-12 col-md-10 m-auto">
+            <form class="login-form" action="" method="POST" enctype="multipart/form-data">
+                <h3>Login Here</h3>
+                {% csrf_token %}
+                {% if error_message %}
+                    <div class="error-message">{{ error_message }}</div>
+                {% endif %}
+
+                <label for="username" rel="nofollow noopener">Username</label>
+                <input type="text" class="form-control" placeholder="Email or Phone" name="username" id="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
+
+                <button type="submit" class="login-link btn btn-primary">Login</button>
+                <p class="card-text">No account? => <a href="{% url 'register' %}" style="color:red; text-decoration:underline;">Register here</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

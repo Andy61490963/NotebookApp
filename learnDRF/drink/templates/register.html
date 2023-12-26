@@ -1,0 +1,25 @@
+{% extends 'base.html' %}{% block register %}
+<div class="container custom-container">
+        <div id="board">
+            <div class="col-12 col-md-10 m-auto">
+                <form class="register-form" action="" method="POST" enctype="multipart/form-data">
+                    <h3>Register</h3>
+
+                    {% if form.errors %}
+                        <p>There was an error with your form...</p>
+                    {% endif %}
+
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <input type="submit" value="Submit"
+                           class="btn btn-primary"
+                           style="margin-top: 50px; width: 100%; background-color: #F0F0F0; color: #080710; padding: 15px 0; border-radius: 5px; cursor: pointer;">
+
+                    <p class="card-text">Already have an account? => <a href="{% url 'login' %}" style="color:red; text-decoration:underline;">Login here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}{% block home %}
+
+ <div class="card">
+        <h2>這是一個Note應用程式，具有以下功能：</h2>
+        <ul>
+            <li>Write notes using Markdown.</li>
+            <li>Organize notes using notebooks. For example:
+                <pre>
+                </pre>
+                <pre>
+notebook1
+├── note1
+├── note2
+└── note3
+notebook2
+├── note1
+├── note2
+└── note3
+                </pre>
+            </li>
+            <li>Download notes as txt.</li>
+            <li>User account system.</li>
+            <li>Trash bin.</li>
+        </ul>
+    </div>
+<style>
+
+    body {
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .card {
+            max-width: 100%;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .card ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .card li {
+            margin-bottom: 5px;
+        }
+    </style>
+{% endblock %}

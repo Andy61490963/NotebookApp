@@ -1,0 +1,46 @@
+{% extends 'base.html' %}{% block trashbin %}
+
+{% if user.is_authenticated %}
+<style>
+    /* Style for the Trash Bin container */
+    .trash-container {
+        background-color: #fff; /* White background */
+        border: 1px solid #ddd; /* Light grey border */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+        padding: 20px; /* Padding around the content */
+        margin: 20px 0; /* Margin around the container */
+    }
+
+    /* Additional styling can go here */
+</style>
+<div class="trash-container">
+    <h1>Trash Bin</h1>
+
+    <ul id="trashed-notes-list"></ul>
+</div>
+
+{% else %}
+<div class="container nopadding-x-md">
+    <div id="board">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-10 m-auto">
+                    <div class="list-group">
+                        <div class="message-container d-flex flex-column align-items-center justify-content-center">
+                            <div class="message mb-3">Sorry! You must be logged in to view this page.</div>
+                            <br>
+                            <a href="{% url 'login' %}" class="login-link btn btn-primary">Login here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endif %}
+{% load static %}
+<script src="{% static 'js/trashBin.js' %}"></script>
+{% endblock %}

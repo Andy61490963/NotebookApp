@@ -1,0 +1,44 @@
+{% extends 'base.html' %}{% block note %}
+
+{% if user.is_authenticated %}
+
+<form id="create-notebook-form">
+<input type="text" id="notebook-name" placeholder="Notebook Name (Notebook can not rename!)">
+<button type="submit">Create Notebook</button>
+</form>
+
+<div id="notebooks-api" data-notebooks-api="{{ notebooks_api }}"></div>
+<div id="notebooks-container">
+
+
+    <div class="container"></div>
+</div>
+
+{% else %}
+<div class="container nopadding-x-md">
+    <div id="board">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-10 m-auto">
+                    <div class="list-group">
+                        <div class="message-container d-flex flex-column align-items-center justify-content-center">
+                            <div class="message mb-3">Sorry! You must be logged in to view this page.</div>
+                            <br>
+                            <a href="{% url 'login' %}" class="login-link btn btn-primary">Login here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endif %}
+
+{% load static %}
+<script src="{% static 'js/displayNote.js' %}"></script>
+<script src="{% static 'js/createNotebook.js' %}"></script>
+
+
+{% endblock %}

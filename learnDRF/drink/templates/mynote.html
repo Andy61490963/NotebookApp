@@ -1,0 +1,57 @@
+{% extends 'base.html' %}{% block mynote %}
+
+{% if user.is_authenticated %}
+    <form id="post-note-form">
+    <div id="note-info">
+        <h1 id="note-title">筆記標題</h1>
+        <div class="horizontal-line"></div>
+        <p id="note-content"></p>
+
+    </div>
+    <div id="note-api" data-note-api="{{ notes_api }}"></div>
+    <div id="note-id" data-note-id="{{ note_id }}"></div>
+
+
+    </form>
+
+    <form id="update-note-form">
+        <label for="new-title">Title</label>
+        <input type="text" id="new-title" placeholder="Title" required>
+
+        <label for="new-content">Content</label>
+        <textarea id="new-content" placeholder="New content" rows="5" required></textarea>
+        <button type="submit" id="update-note" >Update Note</button>
+        <button id="move-to-trash">Move to Trash</button>
+        <button id="downloadtxt"><a href="{% url 'download_note' note_id=note_id %}">Download Note</a></button>
+    </form>
+
+{% else %}
+<div class="container nopadding-x-md">
+    <div id="board">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-10 m-auto">
+                    <div class="list-group">
+                        <div class="message-container d-flex flex-column align-items-center justify-content-center">
+                            <div class="message mb-3">Sorry! You must be logged in to view this page.</div>
+                            <br>
+                            <a href="{% url 'login' %}" class="login-link btn btn-primary">Login here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endif %}
+{% load static %}
+<script src="{% static 'js/fetchNote.js' %}"></script>
+<script src="{% static 'js/updateNote.js' %}"></script>
+<script src="{% static 'js/movetoTrash.js' %}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+
+{% endblock %}
